@@ -2,7 +2,7 @@
 
 ![alt text](image-1.png)
 
-# Deployed link
+# Deployed link (Change the search query as per your need)
 
 https://hottest-tech-news.fly.dev/
 
