@@ -64,6 +64,7 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
 - A compact prompt is built from titles, sources, dates, and links, then sent to OpenAI for summarization.
 - The summary is rendered as bullet points with bolded headlines for fast scanning.
 - The frontend calls the backend directly and displays the sources with publisher icons and thumbnails.
+- Clicking "Read story" opens the original news article in a new browser tab.
 - Tradeoff: No semantic ranking or deduping beyond what SerpApi returns.
 - Tradeoff: Single‑shot summarization keeps latency low but may miss deeper context.
 - Tradeoff: The demo uses only U.S. Google News results to keep the response fast.
@@ -81,3 +82,4 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
 - Can implement langchain or AutogenAI for more advanced summarization.
 - Add a time filter (last 24 hours / last week) for fresher summaries.
 - Show estimated reading time and sentiment.
+- Can add RAG based chatbot where user can query and ask questions about the news articles.
