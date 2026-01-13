@@ -42,12 +42,13 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
    ```
 
 ### Frontend (Vite React)
-1. Install dependencies:
+1. Install Node.js (includes npm): https://nodejs.org/
+2. Install dependencies:
    ```bash
    cd frontend
    npm install
    ```
-2. Run the frontend:
+3. Run the frontend:
    ```bash
    npm run dev
    ```
