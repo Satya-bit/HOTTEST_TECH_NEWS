@@ -10,9 +10,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const envBase = import.meta.env.VITE_API_BASE;
+  const browserOrigin =
+    typeof window !== "undefined" ? window.location.origin : "http://localhost:8000";
+  const isRemote =
+    typeof window !== "undefined" &&
+    !["localhost", "127.0.0.1"].includes(window.location.hostname);
   const apiBase =
-    import.meta.env.VITE_API_BASE ||
-    (typeof window !== "undefined" ? window.location.origin : "http://localhost:8000");
+    envBase && !(isRemote && /localhost|127\.0\.0\.1/.test(envBase)) ? envBase : browserOrigin;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
