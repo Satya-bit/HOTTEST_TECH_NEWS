@@ -1,4 +1,5 @@
-**HOTTEST TECH NEWS**
+# HOTTEST TECH NEWS
+
 ![alt text](image-1.png)
 
 # Deployed link
