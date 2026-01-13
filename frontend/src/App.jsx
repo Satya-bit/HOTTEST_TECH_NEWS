@@ -122,7 +122,7 @@ function App() {
 
       {articles.length > 0 && (
         <section className="results">
-          <h2>Sources</h2>
+          <h2>Sources & other news</h2>
           <div className="cards">
             {articles.map((article) => (
               <article key={article.link} className="card">

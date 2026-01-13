@@ -1,6 +1,21 @@
+**HOTTEST TECH NEWS**
+![alt text](image-1.png)
+
+# Deployed link
+
+https://hottest-tech-news.fly.dev/
+
 # Tech News Summarizer
 
 A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summarizes it with OpenAI.
+
+## Tech stack
+- FastAPI (Python) for the backend API
+- React + Vite for the frontend
+- SerpApi for news search
+- OpenAI API for summarization
+- Docker for containerized deploys
+- Fly.io for cloud deploys
 
 ## How to run locally
 
@@ -19,7 +34,7 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
 3. Set your keys in `backend/.env`:
    - `OPENAI_API_KEY`
    - `SERPAPI_API_KEY`
-   - Optional: `OPENAI_MODEL` (default `gpt-4o-mini`)
+   - Optional: `OPENAI_MODEL` (default `gpt-5`)
 4. Run the API:
    ```bash
    uvicorn app.main:app --reload --port 8000
@@ -31,12 +46,7 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
    cd frontend
    npm install
    ```
-2. Optional: set API base URL (defaults to `http://localhost:8000`):
-   ```bash
-   copy .env.example .env
-   ```
-   Then edit `frontend/.env` if you want a different API URL.
-3. Run the frontend:
+2. Run the frontend:
    ```bash
    npm run dev
    ```
@@ -47,11 +57,25 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
   - Response includes `summary` and `articles`.
 
 ## Approach & tradeoffs
-- Fetches news via SerpApi `google_news` and passes headlines to OpenAI for summarization.
-- Keeps the flow single‑request for speed and simplicity.
-- Tradeoff: No deduping or clustering beyond SerpApi results.
-- Tradeoff: No agent framework yet (lighter dependencies and lower latency).
+![alt text](image.png)
+- The backend calls SerpApi `google_news` for fresh headlines and normalizes the results into a consistent schema.
+- A compact prompt is built from titles, sources, dates, and links, then sent to OpenAI for summarization.
+- The summary is rendered as bullet points with bolded headlines for fast scanning.
+- The frontend calls the backend directly and displays the sources with publisher icons and thumbnails.
+- Tradeoff: No semantic ranking or deduping beyond what SerpApi returns.
+- Tradeoff: Single‑shot summarization keeps latency low but may miss deeper context.
+- Tradeoff: The demo uses only U.S. Google News results to keep the response fast.
 
 ## AI tools used
-- OpenAI API (`chat.completions`) for summarizing the news list into bullet points.
-- Codex for assisting when developing frontend(especially CSS).
+- OpenAI API (`chat.completions`) for summarizing the news list.
+- CODEX for making UI better.
+
+## Improvements in future
+- Add clustering/deduplication to reduce overlapping stories.
+- Add caching to lower SerpApi/OpenAI costs and improve response time.
+- Add retry/backoff for transient API errors and rate limits.
+- Add user presets for common topics and summary length.
+- Improve UI for better user experience.
+- Can implement langchain or AutogenAI for more advanced summarization.
+- Add a time filter (last 24 hours / last week) for fresher summaries.
+- Show estimated reading time and sentiment.
