@@ -3,7 +3,7 @@
 ![alt text](image-1.png)
 
 # Deployed link (Change the search query as per your need)
-- Please view it on laptop for better experience.
+- Please view it on a laptop for better experience.
 
 https://hottest-tech-news.fly.dev/
 
