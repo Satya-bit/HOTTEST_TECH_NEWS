@@ -10,7 +10,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+  const apiBase =
+    import.meta.env.VITE_API_BASE ||
+    (typeof window !== "undefined" ? window.location.origin : "http://localhost:8000");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
