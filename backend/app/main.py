@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
 from typing import Dict, List, Optional
 
 import requests
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
@@ -152,3 +155,21 @@ def summarize(request: SummarizeRequest) -> SummarizeResponse:
     articles = _fetch_news(query, request.num_results)
     summary = _summarize_articles(articles, min(len(articles), request.num_results))
     return SummarizeResponse(query=request.query or "latest technology news", articles=articles, summary=summary)
+
+
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+if FRONTEND_DIST.exists():
+    assets_dir = FRONTEND_DIST / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/")
+    def serve_index() -> FileResponse:
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+    @app.get("/{path:path}")
+    def serve_spa(path: str) -> FileResponse:
+        file_path = FRONTEND_DIST / path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(FRONTEND_DIST / "index.html")
