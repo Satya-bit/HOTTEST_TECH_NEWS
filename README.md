@@ -5,7 +5,7 @@
 # Deployed link (Change the search query as per your need)
 - Please view it on a laptop for better experience.
 
-https://hottest-tech-news.fly.dev/
+https://hottest-tech-news-mhq4wg.fly.dev/
 
 # Tech News Summarizer
 
@@ -36,7 +36,7 @@ A FastAPI + React (Vite) app that fetches hot tech news with SerpApi and summari
 3. Set your keys in `backend/.env`:
    - `OPENAI_API_KEY`
    - `SERPAPI_API_KEY`
-   - Optional: `OPENAI_MODEL` (default `gpt-5`)
+   - Optional: `OPENAI_MODEL` (default `gpt-5.2`)
 4. Run the API:
    ```bash
    uvicorn app.main:app --reload --port 8000
