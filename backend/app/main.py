@@ -17,7 +17,7 @@ load_dotenv()
 
 SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL")
 
 if not OPENAI_API_KEY:
     raise RuntimeError("OPENAI_API_KEY is not set.")
@@ -140,7 +140,7 @@ def _summarize_articles(articles: List[Article], max_bullets: int) -> str:
                 "content": f"Summarize these articles:\n{prompt}",
             },
         ],
-        temperature=0.3,
+        # temperature=0.3,
     )
     return response.choices[0].message.content.strip()
 
