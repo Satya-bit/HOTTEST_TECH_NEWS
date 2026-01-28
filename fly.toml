@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for hottest-tech-news on 2026-01-13T05:15:29Z
+# fly.toml app configuration file generated for hottest-tech-news-mhq4wg on 2026-01-19T16:24:39Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'hottest-tech-news'
-primary_region = 'iad'
+app = 'hottest-tech-news-mhq4wg'
+primary_region = 'ams'
 
 [build]
 
@@ -20,4 +20,4 @@ primary_region = 'iad'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 1024
+  memory_mb = 256
